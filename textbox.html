@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Text Box Width</title>
+    <style>
+        #textbox {
+            all: unset;
+            width: 48px;
+            
+            color: var(--text-text-color-2, rgba(255, 255, 255, 0.80));
+            background-color: none;
+            /* Text/xl/Bold */
+            font-family: Manrope;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 1.875rem; /* 150% */
+        }
+        .button {
+            all: unset;
+            display: flex;
+            padding: 0.25rem 0.5rem;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+
+            border-radius: 0.5rem;
+            background: var(--elevation-3, #0C0C0D);   
+            color: var(--buttons-button-primary, #2ED3B7);
+
+            /* Text/2xs/Bold */
+            font-family: Manrope;
+            font-size: 0.625rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%; /* 0.625rem */
+        }
+        .body {
+            background-color: #111112; display: flex; justify-content: center; padding: 4rem;
+        }
+        .modal {
+            width: 540px; border-radius: 1rem;
+            border: 1px solid var(--stroke, rgba(255, 255, 255, 0.10));
+            background: var(--elevation-3, #0C0C0D); border-radius: 1rem;
+            border: 1px solid var(--stroke, rgba(255, 255, 255, 0.10));
+            background: var(--elevation-3, #0C0C0D);
+            display: flex;
+            padding: 1rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0.5rem;
+            align-self: stretch;
+        }
+        .firstline {
+            display: flex;
+            padding: 0.5rem;
+            align-items: center;
+            gap: 0.25rem;
+            align-self: stretch;
+        }
+        .secondline {
+            display: flex; 
+            padding: 0.5rem;
+            align-items: center;
+            gap: 0.5rem;
+            align-self: stretch;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="modal">
+        <div class="firstline">
+            <div style="color: var(--text-text-color-3, #A5A5A6);
+
+            /* Text/2xs/Regular */
+            font-family: Manrope;
+            font-size: 0.625rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 0.625rem */">
+                Transferring from
+            </div>
+            <div style="color: var(--text-text-color-2, rgba(255, 255, 255, 0.80));
+            text-align: right;
+            
+            /* Text/2xs/Bold */
+            font-family: Manrope;
+            font-size: 0.625rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%; /* 0.625rem */">
+                0xwalletaddress...xyz
+            </div>
+        </div>
+        <div class="secondline">
+            <input id="textbox" type="text" placeholder="0.00" oninput="adjustWidth()" >
+            <div style="
+                color: var(--text-text-color-4, #777879);
+                /* Text/xs/Regular */
+                font-family: Manrope;
+                font-size: 0.75rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.125rem; /* 150% */">
+                USDC
+            </div>
+            <div style="width: 100%; display: flex; justify-content: right;">
+                <button class="button">
+                    25%
+                </button>
+                <button class="button">
+                    50%
+                </button>
+                <button class="button">
+                    MAX
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function adjustWidth() {
+            const textbox = document.getElementById('textbox');
+            // Set the width based on the character count
+            var length = textbox.value.length;
+            textbox.style.width = Math.max(length * 12.5, 48) + 'px';
+        }
+    </script>
+</body>
+</html>
